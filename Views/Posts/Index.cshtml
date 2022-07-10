@@ -1,0 +1,56 @@
+﻿@model IEnumerable<me.Models.Post>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="text-align: center">POSTED MESSAGES</h1>
+
+<div class="justify-content-center">
+<p>
+    <a class="text-decoration-none text-white" style="font-weight: bolder" asp-action="Create">Create New</a>
+</p>
+</div>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                <a class="text-decoration-none" style="font-weight: bolder" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="text-decoration-none" style="font-weight: bolder" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a class="text-decoration-none" style="font-weight: bolder" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
